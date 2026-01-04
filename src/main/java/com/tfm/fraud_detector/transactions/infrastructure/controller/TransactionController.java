@@ -36,10 +36,17 @@ public class TransactionController {
         TransactionOutputDto dto = transactionService.create(inputDto);
         return ResponseEntity.ok(dto);
     }
+
     @PreAuthorize("hasAnyAuthority('ADMIN','AUDITOR')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         transactionService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // endpoint para mantener el backend activo en Render
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("ok");
     }
 }

@@ -19,7 +19,7 @@ public class TransactionAutoProcessor {
 
     private static final String GENERATOR_URL = "https://generator-api-i2wy.onrender.com/generate";
 
-    @Scheduled(fixedRate = 100000) // Milisegundos (100)
+    @Scheduled(fixedRate = 600000) // 10 minutos
     public void fetchAndProcessTransaction() {
         try {
             String json = restTemplate.getForObject(GENERATOR_URL, String.class);
